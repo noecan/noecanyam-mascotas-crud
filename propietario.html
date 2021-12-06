@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>propietario</title>
+	<script type="text/javascript"src="vue.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body class="container">
+	<div id="mipagina">
+		
+ <!--<h1>{{mensaje}}</h1><hr>
+	<h2> Me llamo:<b>{{alumno}}</b></h2>
+	<h3> Tengo: <b>{{edad}}</b></h3>
+	<hr><hr>
+
+
+	<input type="text" placeholder="escribe tu nombre" v-model= "alumno">
+	<input type="number" v-model="edad">
+	<ul>
+		<li v-for=""></li>
+	</ul><hr>-->
+	<h1>{{mensaje}}</h1><hr>
+         <div class="row">
+	     <div class="col-md-4">
+	     <input type="text" placeholder="nombre"class="form-control" v-model="nombre" ref="nombre">
+	 </div>
+	 <div class="col-md-4">
+	     <input type="text" placeholder="apellido"class="form-control" v-model="apellido">
+	 </div>
+	
+	<div class="col-md-4">
+		<select class="form-control" v-model="genero">
+	    			<option disabled="">Elija un genero</option>
+	    			<option v-for="e in genero" v-bind:value="e.nombre">{{e.nombre}}</option>
+	    		</select>
+	</div>
+	<div class="col-md-4">
+		<input type="number" placeholder="edad"class="form-control" v-model="edad"
+		 v-on:keyup.enter="agregarpropietario()">
+	</div>
+   
+
+	<div class="row">
+
+	    	<div class="col-md-8">
+	    <button class="btn btn-primary" @click="agregarpropietario()" v-if="editando==0">
+	    Agregar
+	    </button>
+
+	    <button class="btn btn-warning" v-if="editando==1" @click="guardarEdicion()">
+	    	Actulizar
+	    </button>
+	     </div>
+	    <div class="col-md-4">
+
+	    		<button class="btn btn-info" @click="cancelar()">Cancelar</button>
+
+	    	</div>
+
+
+   </div>
+   </div>
+   <hr>
+   <div class="row">
+	    	<div class="col-md-6">
+	    		<input type="text" class="form-control" placeholder="Escribe el nombre o genero del propietario" v-model="buscar">
+	    	</div>
+	    </div>
+
+
+
+	<table class="table table-borderd">
+		<thead>
+			<th>INDICE</th>
+			<th>NOMBRE</th>
+			<th>APELLIDO</th>
+			<th>GENERO</th>
+			<th>EDAD</th>
+		</thead>
+		<tbody>
+			<tr v-for="(prop,index) in propietario">
+				<td>{{index}}</td>
+				<td>{{prop.nombre}}</td>
+				<td> {{prop.apellido}}</td>
+				<td>{{prop.genero}}</td>
+				<td>{{prop.edad}}</td>
+				<td>
+					<button class="btn btn-primary btn-sm" @click="editarpropietario(index)">
+							Editar
+						</button>
+						<button class="btn btn-danger btn-sm" @click="eliminarpropietario(index)">
+							Eliminar
+						</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row">
+			<div class="col-md-8">
+				<h3>Tenemos: {{numeropropietarios}} propietarios</h3>
+				
+			</div>
+			
+		</div>
+
+  </div>
+ 
+	 
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="propietario.js"></script>
+     <script type="text/javascript" src="sweetalert2.all.min.js"></script>
+</body>
+</html>
